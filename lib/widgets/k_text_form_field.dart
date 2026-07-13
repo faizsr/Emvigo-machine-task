@@ -9,6 +9,8 @@ class KTextFormField extends StatelessWidget {
     this.validator,
     this.obscureText = false,
     this.keyboardType,
+    this.readOnly = false,
+    this.onTap,
   });
 
   final String? hintText;
@@ -16,6 +18,8 @@ class KTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool obscureText;
   final TextInputType? keyboardType;
+  final bool readOnly;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +28,8 @@ class KTextFormField extends StatelessWidget {
       validator: validator,
       obscureText: obscureText,
       keyboardType: keyboardType,
+      readOnly: readOnly,
+      onTap: onTap,
       decoration: InputDecoration(
         filled: true,
         fillColor: AppColors.lightGrey,

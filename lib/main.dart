@@ -1,9 +1,14 @@
+import 'package:emvigo_machine_task/controllers/auth_bloc/auth_bloc.dart';
 import 'package:emvigo_machine_task/constants/app_colors.dart';
 import 'package:emvigo_machine_task/constants/app_constants.dart';
 import 'package:emvigo_machine_task/views/login_view.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -12,14 +17,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: outfit,
-        scaffoldBackgroundColor: AppColors.white,
+    return BlocProvider(
+      create: (_) => AuthBloc(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: outfit,
+          scaffoldBackgroundColor: AppColors.white,
+        ),
+        home: const LoginView(),
       ),
-      home: const LoginView(),
     );
   }
 }
