@@ -1,12 +1,13 @@
 import 'package:emvigo_machine_task/constants/app_constants.dart';
-import 'package:emvigo_machine_task/views/register_view.dart';
 import 'package:emvigo_machine_task/widgets/k_filled_button.dart';
 import 'package:emvigo_machine_task/widgets/k_text_form_field.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+import 'login_view.dart';
+
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class LoginView extends StatelessWidget {
             children: [
               SizedBox(height: 16),
               Text(
-                'Welcome to TestApp',
+                'Create Account',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   fontFamily: dmSerifDisplay,
                 ),
@@ -31,10 +32,12 @@ class LoginView extends StatelessWidget {
               KTextFormField(hintText: 'Email'),
               SizedBox(height: 16),
               KTextFormField(hintText: 'Password'),
+              SizedBox(height: 16),
+              KTextFormField(hintText: 'Confirm Password'),
 
               SizedBox(height: 24),
 
-              KFilledButton(onPressed: () {}, text: 'LOGIN'),
+              KFilledButton(onPressed: () {}, text: 'SIGNUP'),
               Spacer(),
 
               Center(
@@ -42,15 +45,15 @@ class LoginView extends StatelessWidget {
                   text: TextSpan(
                     style: Theme.of(context).textTheme.bodyMedium,
                     children: [
-                      TextSpan(text: "Don't have an account? "),
+                      const TextSpan(text: "Already have an account? "),
                       TextSpan(
-                        text: 'SignUp',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        text: 'SignIn',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                builder: (_) => const RegisterView(),
+                                builder: (_) => const LoginView(),
                               ),
                             );
                           },
